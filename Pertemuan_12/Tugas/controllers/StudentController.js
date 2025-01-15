@@ -8,7 +8,7 @@ class StudentController {
     const students = await Student.all();
 
     const data = {
-      message: "Menampilkkan semua students",
+      message: "Menampilkan semua students",
       data: students,
     };
 

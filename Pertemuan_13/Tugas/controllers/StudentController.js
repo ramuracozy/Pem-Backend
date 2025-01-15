@@ -8,12 +8,13 @@ class StudentController {
     // memanggil method static all dengan async await.
     const students = await Student.all();
 
-    const data = {
-      message: "Menampilkkan semua students",
-      data: students,
-    };
+    // const data = {
+    //   message: "Menampilkkan semua students",
+    //   data: students,
+    // };
 
-    res.json(data);
+    // res.json(data);
+    
   }
 
   async store(req, res) {
