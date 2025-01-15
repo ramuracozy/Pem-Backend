@@ -108,6 +108,76 @@ class AlumniController {
     }
     res.status(404).json(data);
   }
+
+  async search(req, res) {
+    const { name } = req.params;
+    // Mencari data alumni berdasarkan nama
+    const alumni = await Alumni.search(name);
+
+    if (alumni) {
+        const data = {
+            message: "Menampilkan detail data alumni berdasarkan nama",
+            data: alumni,
+        };
+        res.status(200).json(data);
+    } else {
+        const data = {
+            message: "Data alumni tidak ditemukan",
+        };
+        res.status(404).json(data);
+    }
+  }
+
+  // Untuk menampilkan status alumni freshgraduate atau baru lulus
+  async freshgraduate(req, res) {
+    const alumni = await Alumni.findByStatus('freshgraduate');
+
+    if (alumni.length > 0) {
+        res.status(200).json({
+            message: "Menampilkan data alumni dengan status freshgraduate",
+            total: alumni.length,
+            data: alumni
+        });
+    } else {
+        res.status(404).json({
+            message: "Data alumni dengan status freshgraduate tidak ditemukan"
+        });
+    }
+  }
+
+  // Untuk menampilkan status alumni employeed atau bekerja
+  async employeed(req, res) {
+    const alumni = await Alumni.findByStatus('employeed');
+
+    if (alumni.length > 0) {
+        res.status(200).json({
+            message: "Menampilkan data alumni dengan status employeed",
+            total: alumni.length,
+            data: alumni
+        });
+    } else {
+        res.status(404).json({
+            message: "Data alumni dengan status employeed tidak ditemukan"
+        });
+    }
+  }
+
+  // Untuk menampilkan status alumni unemployeed atau menganggur
+  async unemployeed(req, res) {
+    const alumni = await Alumni.findByStatus('unemployeed');
+
+    if (alumni.length > 0) {
+        res.status(200).json({
+            message: "Menampilkan data alumni dengan status unemployeed",
+            total: alumni.length,
+            data: alumni
+        });
+    } else {
+        res.status(404).json({
+            message: "Data alumni dengan status unemployeed tidak ditemukan"
+        });
+    }
+  }
 }
 
 // membuat object AlumniController

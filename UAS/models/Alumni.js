@@ -65,6 +65,46 @@ class Alumni {
       });
     });
   }
+
+  static freshgraduate() {
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM alumnis WHERE status = ?";
+        db.query(sql, ['fresh_graduate'], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+  }
+
+  static employed() {
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM alumnis WHERE status = ?";
+        db.query(sql, ['employed'], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+  }
+
+  static unemployed() {
+    return new Promise((resolve, reject) => {
+        const sql = "SELECT * FROM alumnis WHERE status = ?";
+        db.query(sql, ['unemployed'], (err, results) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+  }
+
 }
 
 // export class Alumni

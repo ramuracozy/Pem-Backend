@@ -15,18 +15,24 @@ router.get("/", (req, res) => {
 
 // Membuat routing alumni
 // Menambahkan route untuk melihat data secara keseluruhan
-router.get("/alumnis", AlumniController.index);
+router.get("/alumni", AlumniController.index);
 
 // Menambahkan route untuk menambahkan data alumni
-router.post("/alumnis", AlumniController.store);
+router.post("/alumni", AlumniController.store);
 
 // Menambahkan route untuk mengupdate data alumni
-router.put("/alumnis/:id", AlumniController.update);
+router.put("/alumni/:id", AlumniController.update);
 
 // Menambahkan route untuk menghapus data alumni
-router.delete("/alumnis/:id", AlumniController.destroy);
+router.delete("/alumni/:id", AlumniController.destroy);
+
+router.get("/alumni/status/freshgraduate", AlumniController.freshgraduate);
+
+router.get("/alumni/status/employeed", AlumniController.employeed);
+
+router.get("/alumni/status/unemployeed", AlumniController.unemployeed);
 
 // Menambahkan route untuk menampilkan detail data alumni
-router.get("/alumnis/:id", AlumniController.show);
+router.get("/alumni/:id", AlumniController.show);
 // export router
 module.exports = router;
